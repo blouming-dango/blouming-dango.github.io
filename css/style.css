@@ -1,0 +1,306 @@
+/* Algemene stijlen */
+html,
+body {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: radial-gradient(75% 75% at 50% 50%, #7d86a9 0%, #071650 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container voor inhoud */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    /* Boven de golven */
+}
+
+/* Hoofdtekst */
+h1 {
+    color: #015871;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+nav ul li {
+    border-bottom: none;
+}
+
+/* Buttons */
+button {
+    background-color: #015871;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #013f52;
+}
+
+/* Nieuwe zeegolf animatie */
+.ocean {
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #015871;
+    /* Donkerblauwe oceaanbasis */
+    z-index: 1;
+}
+
+.wave {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+    position: absolute;
+    width: 6400px;
+    /* Brede golf voor herhaling */
+    top: -198px;
+    left: 0;
+    height: 198px;
+    transform: translate(0, 0, 0);
+    animation: wave 7s ease infinite;
+}
+
+.wave:nth-of-type(2) {
+    top: -168px;
+    animation: swell 4s ease infinite;
+    opacity: 1;
+}
+
+/* Add a third wave */
+.wave:nth-of-type(3) {
+    top: -138px;
+    animation: wave-reverse 6s ease infinite;
+    opacity: 0.8;
+}
+
+@keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+@keyframes swell {
+
+    0%,
+    100% {
+        transform: translate(0, -30px);
+    }
+
+    50% {
+        transform: translate(0, 5px);
+    }
+}
+
+/* Keyframes for reverse wave animation */
+@keyframes wave-reverse {
+    0% {
+        margin-left: -1600px;
+    }
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+/* Formulierelementen */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Ruimte tussen elementen */
+}
+
+label {
+    font-weight: 500;
+    text-align: left;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #015871;
+    outline: none;
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
+    background-color: #015871;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #013f52;
+}
+
+/* Second button (such as 'Back') */
+button[type="reset"],
+button.secondary {
+    background-color: #ccc;
+    color: #333;
+}
+
+button[type="reset"]:hover,
+button.secondary:hover {
+    background-color: #bbb;
+}
+
+/* Links */
+a {
+    color: #015871;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #013f52;
+    text-decoration: underline;
+}
+
+/* Lists (for download page) */
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+ul li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+ul li small {
+    color: #666;
+    font-size: 0.85em;
+    display: block;
+    /* Ensures it appears on a new line */
+    margin-top: 5px;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+/* Errormessages */
+.error {
+    color: #d32f2f;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+/* Navigation (for index page) */
+nav ul {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+nav ul li {
+    border-bottom: none;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+/* User info block */
+.user-info {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.user-info p {
+    margin: 0;
+}
+
+.user-info strong {
+    color: #015871;
+}
+
+.logout-btn {
+    background-color: #d32f2f;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #b71c1c;
+    color: #fff;
+    text-decoration: none;
+}
